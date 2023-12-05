@@ -12,4 +12,4 @@ In the main directory, you can run
 
 ### `go run backend/main.go`
 
-Launches the sql database in local mode.\
+Will start the app
