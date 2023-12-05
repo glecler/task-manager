@@ -45,5 +45,6 @@ func main() {
 	e.Static("/", frontendDir)
 
     e.Start(":80")
+	fmt.Println("heyo")
 }
 
