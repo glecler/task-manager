@@ -6,7 +6,7 @@ import { getTasks, deleteTask, editTask, changeTaskStatus, createTask } from './
 
 function App() {
 	
-	const [tasks, setTasks] = useState(null);
+	const [tasks, setTasks] = useState([]);
 
 	const handleCreateTask = (task, description) => {
 		createTask(task, description)
@@ -16,7 +16,7 @@ function App() {
 
 	useEffect(() => {
 		getTasks()
-		.then(data => setTasks(data))
+		.then(data => {const updatedTasks = data || []; setTasks(updatedTasks)})
 		.catch(error => console.log('error getting tasks', error))
   }, [tasks]);
 

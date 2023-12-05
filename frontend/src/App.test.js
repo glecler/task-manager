@@ -8,6 +8,13 @@ test('renders title', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
+test('renders button', () => {
+	render(<App />);
+	const buttonElement = screen.getByText(/New Task/i);
+  expect(buttonElement).toBeInTheDocument();
+
+});
+
 test('renders task board', () => {
 	render(<App />);
   const todoElement = screen.getByText(/To Do/i);
