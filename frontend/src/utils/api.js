@@ -1,4 +1,4 @@
-const BASE_URL = 'http://0.0.0.0:80'
+const BASE_URL = 'http://15.188.119.1:80'
 
 const changeTaskStatus = (task, status) => {
 
