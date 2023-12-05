@@ -4,15 +4,12 @@ First project of my return to coding. Simplest task manager possible, using Reac
 
 # How to run locally
 
-In the project directory, you can run:
+In the frontend directory, you can run:
 
-### `npm start`
+### `npm run build`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the main directory, you can run
 
-In ./backend, you can run
-
-### `go run main.go`
+### `go run backend/main.go`
 
 Launches the sql database in local mode.\
