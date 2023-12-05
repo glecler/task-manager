@@ -3,10 +3,12 @@ package api
 import (
 	"net/http"
 	"github.com/labstack/echo"
+	"database/sql"
+	"github.com/glecler/task-manager/backend/models"
 )
 
-func postHandler (c echo.Context) {
-	var newItem Item
+func PostHandler (c echo.Context, db *sql.DB) error {
+	var newItem models.Item
 	if err := c.Bind(&newItem); err != nil {
 		return c.String(http.StatusBadRequest, "Invalid request payload")
 	}

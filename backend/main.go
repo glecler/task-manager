@@ -1,14 +1,11 @@
 package main
 
 import (
-	"./api"
+	"github.com/glecler/task-manager/backend/api"
     "database/sql"
-    "net/http"
 	"fmt"
-	"strconv"
     "github.com/labstack/echo"
     _ "github.com/mattn/go-sqlite3"
-	 "github.com/labstack/echo/middleware"
 )
 
 func createTable(db *sql.DB) error {
@@ -26,7 +23,7 @@ func createTable(db *sql.DB) error {
 
 func main() {
     e := echo.New()
-
+	
     db, err := sql.Open("sqlite3", "database.db")
     if err != nil {
         e.Logger.Fatal(err)
@@ -37,20 +34,14 @@ func main() {
 		fmt.Println("Failed to create table:", err)
 		return
 	}
-    
-    type Item struct {
-        ID   int    `json:"id"`
-        Status string `json:"status"`
-        Description string `json:"description"`
-    }
 
-    e.GET("/items", api.getHandler)
-	e.POST("/items", api.postHandler)
-	e.PUT("/items/:id", api.putDescriptionHandler)
-	e.PUT("/itemsstatus/:id", api.putStatusHandler)
-	e.DELETE("/items/:id", api.deleteHandler)
+    e.GET("/items", func(c echo.Context) error { return api.GetHandler(c, db)})
+	e.POST("/items", func(c echo.Context) error { return api.PostHandler(c, db)})
+	e.PUT("/items/:id", func(c echo.Context) error { return api.PutDescriptionHandler(c, db)})
+	e.PUT("/itemsstatus/:id", func(c echo.Context) error { return api.PutStatusHandler(c, db)})
+	e.DELETE("/items/:id", func(c echo.Context) error { return api.DeleteHandler(c, db)})
 	
-	frontendDir := "../frontend/build"
+	frontendDir := "./frontend/build"
 	e.Static("/", frontendDir)
 
     e.Start(":8080")

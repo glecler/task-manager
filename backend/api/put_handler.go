@@ -2,16 +2,19 @@ package api
 
 import (
 	"net/http"
+	"database/sql"
 	"github.com/labstack/echo"
+	"strconv"
+	"github.com/glecler/task-manager/backend/models"
 )
 
-func putDescriptionHandler (c echo.Context) {
+func PutDescriptionHandler (c echo.Context, db *sql.DB) error {
 	itemID, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		return c.String(http.StatusBadRequest, "Invalid item ID")
 	}
 
-	var updatedItem Item
+	var updatedItem models.Item
 	if err := c.Bind(&updatedItem); err != nil {
 		return c.String(http.StatusBadRequest, "Invalid request body")
 	}
@@ -23,13 +26,13 @@ func putDescriptionHandler (c echo.Context) {
 	return c.JSON(http.StatusOK, updatedItem)
 }
 
-func putStatusHandler (c echo.Context) {
+func PutStatusHandler (c echo.Context, db *sql.DB) error {
 	itemID, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		return c.String(http.StatusBadRequest, "Invalid item ID")
 	}
 
-	var updatedItem Item
+	var updatedItem models.Item
 	if err := c.Bind(&updatedItem); err != nil {
 		return c.String(http.StatusBadRequest, "Invalid request body")
 	}

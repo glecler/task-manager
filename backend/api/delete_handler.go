@@ -2,10 +2,12 @@ package api
 
 import (
 	"net/http"
+	"strconv"
 	"github.com/labstack/echo"
+	"database/sql"
 )
 
-func deleteHandler(c.echo.Context) error {
+func DeleteHandler(c echo.Context, db *sql.DB) error {
 	itemID, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		return c.String(http.StatusBadRequest, "Invalid item ID")
