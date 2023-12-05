@@ -44,6 +44,6 @@ func main() {
 	frontendDir := "./frontend/build"
 	e.Static("/", frontendDir)
 
-    e.Start(":8080")
+    e.Start(":80")
 }
 

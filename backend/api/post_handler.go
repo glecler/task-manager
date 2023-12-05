@@ -23,5 +23,6 @@ func PostHandler (c echo.Context, db *sql.DB) error {
 		return c.String(http.StatusInternalServerError, "Failed to get item ID")
 	}
 	newItem.ID = int(newItemID)
+	
 	return c.JSON(http.StatusCreated, newItem)
 }
