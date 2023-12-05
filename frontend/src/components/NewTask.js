@@ -1,13 +1,13 @@
 import { Box, Select, TextArea, FormField, Button } from 'grommet';
 import React, { useState } from 'react';
 
-export default function NewTask({ onCreateTask }) {
+export default function NewTask({ createTask }) {
   const [status, setStatus] = useState('');
   const [description, setDescription] = useState('');
 
   const handleConfirmCreateTask = () => {
     if (status && description) {
-      onCreateTask(status, description);
+      createTask(status, description);
     } else {
       console.log('Invalid input.');
     }
