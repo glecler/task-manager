@@ -4,12 +4,4 @@ First project of my return to coding. Simplest task manager possible, using Reac
 
 # How to run locally
 
-In the frontend directory, you can run:
-
-### `npm run build`
-
-In the main directory, you can run
-
-### `go run backend/main.go`
-
-Will start the app
+To start the app, simply execute ./start.sh and open your browser on http://localhost:8080
