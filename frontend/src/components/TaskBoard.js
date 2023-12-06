@@ -1,4 +1,4 @@
-import { Box } from 'grommet';
+import { Box, Heading } from 'grommet';
 import Task from './Task.js';
 
 export default function TaskBoard({tasks, editTask, deleteTask, changeTaskStatus}) {
@@ -10,20 +10,20 @@ export default function TaskBoard({tasks, editTask, deleteTask, changeTaskStatus
 
 		return (
 		<Box round="medium" direction="row" gap="medium" justify="around" fill>
-        <Box fill gap="medium" round="medium" elevation="large">
-          <h2>To Do</h2>
+        <Box fill align="center" gap="medium" round="medium" elevation="large">
+          <Heading level="2">To Do</Heading>
 			{todoTasks.map(task => (
               <Task task={task} editTask={editTask} deleteTask={deleteTask} changeTaskStatus={changeTaskStatus}/>
             ))}
         </Box>
-				<Box fill gap="medium" round="medium" elevation="large">
-          <h2>In Progress</h2>
+				<Box fill align="center" gap="medium" round="medium" elevation="large">
+          <Heading level="2">In Progress</Heading>
 						{progTasks.map(task => (
               <Task task={task} editTask={editTask} deleteTask={deleteTask} changeTaskStatus={changeTaskStatus}/>
             ))}
         </Box>
-				<Box fill gap="medium" round="medium" elevation="large">
-          <h2>Done</h2>
+				<Box fill align="center" gap="medium" round="medium" elevation="large">
+          <Heading level="2">Done</Heading>
 						{doneTasks.map(task => (
               <Task task={task} editTask={editTask} deleteTask={deleteTask} changeTaskStatus={changeTaskStatus}/>
             ))}

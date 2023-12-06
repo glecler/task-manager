@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Roboto";
+  src:
+	local("Roboto.ttf"),
+	url("/Users/gregoirelecler/Documents/GoblinModeCoding/task-manager/frontend/public/fonts/Roboto-Light.ttf");
+}
+
+
+body {
+  white-space: pre-line;
+}

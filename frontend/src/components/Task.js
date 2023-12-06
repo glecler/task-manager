@@ -1,6 +1,6 @@
-import { FormField, Select, TextArea, Button, Box, DropButton, Card, CardHeader, CardBody, CardFooter } from 'grommet';
+import { Tag, Heading, FormField, Select, TextArea, Button, Box, DropButton } from 'grommet';
 import { MoreVertical } from 'grommet-icons';
-import { useState , useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Task ( {task, editTask, deleteTask, changeTaskStatus} ) {
 
@@ -29,9 +29,12 @@ export default function Task ( {task, editTask, deleteTask, changeTaskStatus} ) 
 	};
 
 	return (
-		<Card gap="medium" elevation="large">
-			<CardBody> {task.description} </CardBody>
-			<CardFooter>
+		<Box fill round="medium" elevation="large">
+			<Box gap="small" direction="row" align="center" fill>
+			<Box fill direction="row" wrap width={{max:'90%'}} align="center" margin="small">
+				<Tag name={task.tags}/>
+			</Box>
+			<Box>
 				    <DropButton
 							icon={<MoreVertical/>}
 							dropContent={
@@ -61,7 +64,9 @@ export default function Task ( {task, editTask, deleteTask, changeTaskStatus} ) 
 									<Button label='Delete' onClick={onClickDeleteTask}/>
 								</Box>}
 						/>
-			</CardFooter>
-		</Card>
+			</Box>
+			</Box>
+			<Box margin="small" round="medium" align="center"> <Heading level="3"> {task.description} </Heading> </Box>
+		</Box>
 	);
 }

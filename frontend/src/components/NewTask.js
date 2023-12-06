@@ -4,22 +4,27 @@ import React, { useState } from 'react';
 export default function NewTask({ createTask }) {
   const [status, setStatus] = useState('');
   const [description, setDescription] = useState('');
+  const [tags, setTags] = useState('');
 
   const handleConfirmCreateTask = () => {
-    if (status && description) {
-      createTask(status, description);
+		console.log("tags", tags);
+    if (status && description && tags) {
+      createTask(status, description, tags);
     } else {
       console.log('Invalid input.');
     }
   };
 
 	return (
-		<Box width={{max:"50%"}} align="center">
+		<Box align="center">
       <FormField label="Status">
           <Select value={status} onChange={({option}) => setStatus(option)} options={['To Do', 'In Progress', 'Done']}/>
       </FormField>
-      <FormField label="Description">
+      <FormField fill label="Description">
 					<TextArea value={description} onChange={event => setDescription(event.target.value)} placeholder="type here" />
+      </FormField>
+      <FormField fill label="Tags">
+					<TextArea value={tags} onChange={event => setTags(event.target.value)} placeholder="add tags here" />
       </FormField>
       <Button label="Create Task" onClick={handleConfirmCreateTask}/>
     </Box>
