@@ -44,7 +44,7 @@ func main() {
 	frontendDir := "./frontend/build"
 	e.Static("/", frontendDir)
 
-	if err := e.Start(":80"); err != nil {
+	if err := e.Start(":8080"); err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println("heyo")
